@@ -1,16 +1,22 @@
-import React, { Component } from "react";
-import axios from "axios";
-import { connect } from "react-redux";
-import mogo from "./maroon-logo.svg";
+import React, { Component } from 'react';
+import axios from 'axios';
+import { connect } from 'react-redux';
+import mogo from './maroon-logo.svg';
 
-import "./Login.css";
+import {
+  updateUsername,
+  updateId,
+  updateUsernameID
+} from './../../ducks/reducer';
+
+import './Login.css';
 
 class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: "",
-      password: ""
+      username: '',
+      password: ''
     };
     this.goLogin = this.goLogin.bind(this);
     this.addUsername = this.addUsername.bind(this);
@@ -19,25 +25,36 @@ class Login extends Component {
   }
 
   goLogin() {
+    this.props
+      .updateUsernameID(this.state.username, this.state.password)
+      .then(response => {
+        if (response.value) {
+          this.props.history.push('/inventory');
+        } else {
+          console.log('nope');
+        }
+      });
+  }
+  goRegister() {
     axios
-      .post("/api/auth/login", {
+      .post('/api/auth/register', {
         username: this.state.username,
         password: this.state.password
       })
       .then(response => {
-        console.log(response);
-      })
-      .catch(console.log);
-  }
-  goRegister() {
-    console.log(this.state);
+        if (response.data.noEntry === 'true') {
+          alert('You are already Registered, please use Login');
+        } else {
+          this.props.updateUsername(response.data.responseU);
+          this.props.updateId(response.data.responseI);
+          this.props.history.push('/inventory');
+        }
+      });
   }
   addUsername(e) {
-    console.log(e);
     this.setState({ username: e.target.value });
   }
   addPassword(e) {
-    console.log(e);
     this.setState({ password: e.target.value });
   }
 
@@ -78,4 +95,8 @@ const mapStateToProps = state => {
   return state;
 };
 
-export default connect(mapStateToProps, {})(Login);
+export default connect(mapStateToProps, {
+  updateUsername,
+  updateId,
+  updateUsernameID
+})(Login);

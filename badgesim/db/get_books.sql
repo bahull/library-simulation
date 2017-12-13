@@ -1,0 +1,1 @@
+Select * FROM book_inventory WHERE status = 'inStock'

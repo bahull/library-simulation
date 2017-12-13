@@ -10,7 +10,7 @@
   color: #4e1e29;
   left: 18%;
   position: relative;
-  font-family: "Alegreya", serif;
+  font-family: 'Alegreya', serif;
   font-size: 45px;
   margin-bottom: 20px;
 }
@@ -25,7 +25,7 @@
 .loginBox h2 {
   color: #fbffe6;
   font-size: 30px;
-  font-family: "open sans";
+  font-family: 'open sans';
   width: 10%;
 }
 
