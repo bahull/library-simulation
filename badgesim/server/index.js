@@ -42,7 +42,7 @@ app.post('/api/userInfo', (req, res, next) => {
   req.session.username = username;
   req.session.userID = userID;
 });
-
+//test
 app.listen(port, () => {
   console.log(`listening at port: ${port}`);
 });
