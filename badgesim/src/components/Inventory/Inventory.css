@@ -1,0 +1,28 @@
+.inventoryHead {
+  color: #4e1e29;
+  display: flex;
+  justify-content: space-between;
+}
+
+.inventoryHead h1 {
+  font-family: 'Alegreya', serif;
+  font-size: 40px;
+  letter-spacing: 2px;
+}
+.stockStatus {
+  display: flex;
+}
+.stockStatus h4 {
+  margin: 8px;
+}
+.stockStatus input {
+  border: 5px solid #4e1e29;
+}
+.content {
+  margin-top: 20px;
+  height: 70vh;
+  width: 50vw;
+  margin: auto;
+  background: blue;
+  position: relative;
+}

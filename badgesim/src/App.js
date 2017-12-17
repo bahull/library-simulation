@@ -24,7 +24,13 @@ class App extends Component {
       <div>
         {this.props.location.pathname !== '/' && <Header />}
         <div className="App">
-          <div className="innerContent">
+          <div
+            className={
+              this.props.location.pathname !== '/'
+                ? 'innerContentNotLogin'
+                : 'innerContent'
+            }
+          >
             <Switch>
               <Route path="/inventory" component={Inventory} />
               <Route path="/details/:id" component={Details} />
