@@ -1,9 +1,38 @@
 .headerBack {
   width: 100vw;
-  height: 100vh;
+  height: 8vh;
   background-color: #020402;
 }
 .tanLogo {
-  height: 50px;
+  height: 54px;
   width: 50px;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+nav h3 {
+  margin-right: 20px;
+  margin-top: 15px;
+  font-family: 'open sans', serif;
+  font-weight: 100;
+  color: #c6b38e;
+}
+
+.navLinks {
+  display: flex;
+  width: 35%;
+  justify-content: space-between;
+}
+.navLinks a {
+  color: #c6b38e;
+  font-family: 'open sans', serif;
+  letter-spacing: 1px;
+  margin-top: 15px;
+}
+
+a {
+  text-decoration: none;
 }

@@ -21,18 +21,20 @@ class App extends Component {
   render() {
     console.log(this.props.location);
     return (
-      <div className="App">
+      <div>
         {this.props.location.pathname !== '/' && <Header />}
-        <div className="innerContent">
-          <Switch>
-            <Route path="/inventory" component={Inventory} />
-            <Route path="/details/:id" component={Details} />
-            <Route path="/edit/:id" component={EditBooks} />
-            <Route path="/add" component={AddBooks} />
-            <Route path="/cart" component={Cart} />
-            <Route path="/myBooks" component={MyBooks} />
-            <Route exact path="/" component={Login} />
-          </Switch>
+        <div className="App">
+          <div className="innerContent">
+            <Switch>
+              <Route path="/inventory" component={Inventory} />
+              <Route path="/details/:id" component={Details} />
+              <Route path="/edit/:id" component={EditBooks} />
+              <Route path="/add" component={AddBooks} />
+              <Route path="/cart" component={Cart} />
+              <Route path="/myBooks" component={MyBooks} />
+              <Route exact path="/" component={Login} />
+            </Switch>
+          </div>
         </div>
       </div>
     );
