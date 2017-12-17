@@ -2,16 +2,21 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 
+import { updateBooks } from './../../ducks/reducer';
+
 import Cards from './Cards/Cards';
 
 import './Inventory.css';
 
 class Inventory extends Component {
   componentDidMount() {
-    axios.post('/api/userInfo', {
-      username: this.props.username,
-      userID: this.props.userID
-    });
+    axios
+      .post('/api/userInfo', {
+        username: this.props.username,
+        userID: this.props.userID
+      })
+      .then();
+    this.props.updateBooks();
   }
   render() {
     return (
@@ -38,7 +43,10 @@ class Inventory extends Component {
           </div>
         </div>
         <div className="content">
-          <Cards />
+          {this.props.books &&
+            this.props.books.map((curr, index) => {
+              return <Cards key={index} cardInfo={curr} />;
+            })}
         </div>
       </div>
     );
@@ -46,4 +54,4 @@ class Inventory extends Component {
 }
 const mapStateToProps = state => state;
 
-export default connect(mapStateToProps, {})(Inventory);
+export default connect(mapStateToProps, { updateBooks })(Inventory);

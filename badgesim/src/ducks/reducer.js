@@ -5,6 +5,7 @@ const UPDATE_USERNAME = 'UPDATE_NAME';
 const UPDATE_USERNAMEID = 'UPDATE_NAME';
 const UPDATE_USERNAME_INFO = 'UPDATE_NAME_INFO';
 const UPDATE_ID = 'UPDATE_ID';
+const UPDATE_BOOKS = 'UPDATE_BOOKS';
 
 // ACTION BUILDERS
 export function updateUsernameID(username, password) {
@@ -39,10 +40,17 @@ export function updateId(userID) {
     payload: userID
   };
 }
+export function updateBooks(books) {
+  return {
+    type: UPDATE_BOOKS,
+    payload: axios.get('/api/getBooks').then(response => response.data)
+  };
+}
 
 let initialState = {
   username: '',
-  userID: 0
+  userID: 0,
+  books: []
 };
 
 //REDUCER
@@ -61,6 +69,10 @@ export default function(state = initialState, action) {
       return Object.assign({}, state, { username: action.payload });
     case UPDATE_ID:
       return Object.assign({}, state, { userID: action.payload });
+    case UPDATE_BOOKS + '_PENDING':
+      return Object.assign({}, state, { loading: true });
+    case UPDATE_BOOKS + '_FULFILLED':
+      return Object.assign({}, state, { books: action.payload });
     default:
       return state;
   }

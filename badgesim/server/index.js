@@ -34,6 +34,7 @@ app.use(json());
 app.use(cors());
 
 const logController = require('./controllers/login_controller');
+const booksController = require('./controllers/booksController');
 
 app.post('/api/auth/register', logController.register);
 app.post('/api/auth/login', logController.login);
@@ -42,6 +43,7 @@ app.post('/api/userInfo', (req, res, next) => {
   req.session.username = username;
   req.session.userID = userID;
 });
+app.get('/api/getBooks', booksController.getBooks);
 //test
 app.listen(port, () => {
   console.log(`listening at port: ${port}`);

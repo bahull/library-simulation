@@ -1,15 +1,12 @@
 module.exports = {
   getBooks: (req, res, next) => {
     const dbInstance = req.app.get('db');
-    const { username, password } = req.body;
 
     dbInstance
-      .add_user([username, password])
+      .get_books()
       .then(response => {
-        res
-          .status(200)
-          .json({ responseU: response[0].username, responseI: response[0].id });
+        res.status(200).json(response);
       })
-      .catch(error => res.status(200).send({ noEntry: 'true' }));
+      .catch(error => console.log(error));
   }
 };

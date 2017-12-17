@@ -3,18 +3,23 @@ import './Cards.css';
 
 class Cards extends Component {
   render() {
+    console.log(this.props.cardInfo);
+    const { cardInfo } = this.props;
     return (
       <div className="cardsBackground">
         <div className="container">
-          <img src="" className="cardsImg" />
+          <img
+            src={cardInfo.picture ? cardInfo.picture : ''}
+            className="cardsImg"
+          />
           <div className="titleAuthor">
-            <h1 classNames="cardsTitle">Test Title</h1>
+            <h2 className="cardsTitle">{cardInfo.book_title}</h2>
             <div className="cardsAuthor">
-              <p>by</p> <h3>fake Author</h3>
+              <p>by</p> <h3>{cardInfo.book_author}</h3>
             </div>
           </div>
           <div className="cardsStock">
-            <h4>In Stock: </h4>
+            <h4>In Stock: {cardInfo.status === 'inStock' ? 'Yes' : 'No'}</h4>
           </div>
         </div>
       </div>

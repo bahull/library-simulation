@@ -2,10 +2,11 @@
   background: #fbffe6;
   margin: auto;
   height: 15vh;
-  width: 40vw;
+  width: 45vw;
   border-radius: 10px;
   border: 1px solid #4e1e29;
   padding: 15px;
+  margin-bottom: 10px;
 }
 .cardsImg {
   background: black;
@@ -27,7 +28,7 @@
   font-family: 'Open Sans', serif;
   justify-content: space-around;
 }
-.titleAuthor h1 {
+.titleAuthor h2 {
   letter-spacing: 2px;
 }
 .cardsAuthor {
