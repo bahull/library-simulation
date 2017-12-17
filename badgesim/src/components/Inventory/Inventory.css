@@ -25,3 +25,6 @@
   position: relative;
   overflow: scroll;
 }
+a {
+  text-decoration: none;
+}

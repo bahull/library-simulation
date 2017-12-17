@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 
+import { Link } from 'react-router-dom';
+
 import { updateBooks } from './../../ducks/reducer';
 
 import Cards from './Cards/Cards';
@@ -45,7 +47,13 @@ class Inventory extends Component {
         <div className="content">
           {this.props.books &&
             this.props.books.map((curr, index) => {
-              return <Cards key={index} cardInfo={curr} />;
+              console.log(curr.id);
+              return (
+                <Link to={`/details/${index}`} key={index}>
+                  {' '}
+                  <Cards cardInfo={curr} />
+                </Link>
+              );
             })}
         </div>
       </div>
